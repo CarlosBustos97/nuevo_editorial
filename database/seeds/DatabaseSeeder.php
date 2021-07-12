@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         // factory(App\Empleado::class,10)->create();
         // factory(App\Revista::class,10)->create();
         // factory(App\Periodista_Articulo::class,10)->create();
-        // factory(App\Revista_Articulo::class,10)->create();
-        factory(App\Sucursal_Revista::class,10)->create();        
+        factory(App\Revista_Articulo::class,10)->create();
+        //factory(App\Sucursal_Revista::class,10)->create();        
     }
 }

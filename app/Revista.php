@@ -11,12 +11,10 @@ class Revista extends Model
     }
     public function revistas_articulos(){
         // return $this->belongsTo(Revista_Articulo::class, 'foreign_key', 'other_key');
-        return $this->hasMany(Revista_Articulo::class);
-         
+        return $this->hasMany(Revista_Articulo::class);         
     }
     public function sucursales_revistas(){
         // return $this->belongsTo(Revista_Articulo::class, 'foreign_key', 'other_key');
-        return $this->hasMany(Sucursal_Revista::class);
-         
+        return $this->hasMany(Sucursal_Revista::class);         
     }
 }

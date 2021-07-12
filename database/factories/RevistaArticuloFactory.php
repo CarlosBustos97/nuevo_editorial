@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Revista_Articulo::class, function (Faker $faker) {
     return [
-        'revista_id' => rand(1,5),
+        'revista_id' => rand(1,4),
         'articulo_id' => rand(1,5),
     ];
 });
