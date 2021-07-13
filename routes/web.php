@@ -36,4 +36,3 @@ Route::view('agregarRevistas', 'agregarRevistas')->name('agregarRevistas');
 Route::get('periodistas',[PeriodistaController::class,'index'])->name('periodistas');
 Route::get('periodista/nombre/{id}', [PeriodistaController::class,'cargarPeriodista'])->name('periodista');
 Route::delete('periodista/delete_periodista/{periodista?}/{articulo?}',[PeriodistaController::class,'delete'])->name('delete.periodista_articulo');
-Route::post('periodista/agregar_articulo',[PeriodistaController::class,'store'])->name('store.periodista_articulo');

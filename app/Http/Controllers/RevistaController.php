@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Revista;
 use App\Revista_Articulo;
+use App\Tipo;
 
 class RevistaController extends Controller
 {
@@ -13,7 +14,7 @@ class RevistaController extends Controller
         //$articulo = Revista_Articulo::get();
         $revistas = Revista::get();        
         return view('revistas',[
-            'revistas' => $revistas,            
+            'revistas' => $revistas,   
         ]);
     }
     public function cargarRevista(Request $request){
@@ -52,6 +53,10 @@ class RevistaController extends Controller
         //     'revista' => $revista,
         // ]);
         return 'si';
+    }
+
+    public function store(){
+
     }
 
 }
