@@ -12,12 +12,14 @@ class ArticuloController extends Controller
 {
     public function cargarArticulo(Request $request){
         $revista_articulo = Revista_Articulo::where('articulo_id','=',$request->id)->get();
+        $articulo = Articulo::where('id','=',$request->id)->first();
         $revista = DB::select(
             'select * from editorial.revistas 
             where id not in (SELECT revista_id FROM editorial.revista__articulos where articulo_id = ?)', [$request->id]);
         return view('articulo',[
             'revista_articulo' =>  $revista_articulo,
             'revista' => $revista,
+            'articulo' => $articulo,
         
         ]);
         // return $articulo;

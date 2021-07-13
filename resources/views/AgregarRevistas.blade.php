@@ -15,7 +15,6 @@
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
         <!-- axios -->
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-        
     </head>
     <body>
         <div class="container-fluid">
@@ -53,37 +52,52 @@
             </nav>
         </div>
         <div class="container">
-            <table class="table table-striped table-hover">
-                <thead>
-                    <th class="col-4">Nombre</th>
-                    <th class="col-3">Telefono</th>
-                    <th class="col-4">Especialidad</th>
-                    <th class="col-1">Ver</th>
-                </thead>
-                <tbody>
-                    @foreach ($periodistas as $item)
-                        <tr>
-                            <td>{{$item->nombre}} {{$item->apellido}}</td>                        
-                            <td>{{$item->telefono}}</td>                        
-                            <td>{{$item->especialidad}}</td>
-                            <td>
-                                <form action="{{route('periodista',$item->id)}}" method="GET">
-                                    <button class="btn btn-dark btn-sm border m-1 ps-3 pe-3" type="submit">
-                                        Ver
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-
-            </table>
+            <div class="form">            
+                <form action="">
+                    <div class="row pt-3">
+                        <div class="col-lg-1 pt-2 ps-4 pe-0">
+                            Titulo:
+                        </div>
+                        <div class="col-lg-3 ps-0">
+                            <input type="text" class="form-control" id="titulo" placeholder="Titulo">
+                        </div>
+                        <div class="col-lg-1 pt-2 ps-0 pe-0">
+                            Fecha:
+                        </div>
+                        <div class="col-lg-4 ps-0 pe-5 text-center">
+                            <input type="date" class="form-control" id="ejemplares" placeholder="1">
+                        </div>
+                    </div>
+                    <div class="row pt-3">
+                        <div class="col-lg-1 pt-2 ps-3 pe-0">
+                            Páginas:
+                        </div>
+                        <div class="col-lg-1 ps-2 pe-4 text-center">
+                            <input type="number" class="form-control" id="paginas" placeholder="1">
+                        </div>
+                        <div class="col-lg-1 pt-2 ps-0 pe-0">
+                            Ejemplares:
+                        </div>
+                        <div class="col-lg-1 ps-2 pe-4 text-center">
+                            <input type="number" class="form-control" id="ejemplares" placeholder="1">
+                        </div>
+                        <div class="col-lg-1 pt-2 ps-0 pe-0">
+                            Genero:
+                        </div>
+                        <div class="col-lg-4 ps-0 pe-5 text-center">
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Seleccione...</option>
+                                @foreach ($tipo as $item)
+                                    <option value="{{$item->id}}">{{$item->tipo}}</option>
+                                @endforeach
+                                
+                                
+                              </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
-
-        
-            
-            
-        
         
             
                 

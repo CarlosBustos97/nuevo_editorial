@@ -18,12 +18,14 @@ class RevistaController extends Controller
     }
     public function cargarRevista(Request $request){
         $revista_articulo = Revista_Articulo::where('revista_id','=',$request->id)->get();
+        $revista = Revista::where('id','=',$request->id)->first();
         $articulos = DB::select(
             'select * from editorial.articulos 
             where id not in (SELECT articulo_id FROM editorial.revista__articulos where revista_id = ?)', [$request->id]);
         return view('revista',[
             'revista_articulo' =>  $revista_articulo,
             'articulos' => $articulos,
+            'revista' => $revista
         
         ]);
         // return $articulo;

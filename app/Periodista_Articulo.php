@@ -8,12 +8,12 @@ class Periodista_Articulo extends Model
 {
     public function articulo(){
         // return $this->belongsTo(Revista_Articulo::class, 'foreign_key', 'other_key');
-        return $this->belengsTo(Articulo::class);
+        return $this->belongsTo(Articulo::class);
          
     }
     public function periodista(){
         // return $this->belongsTo(Revista_Articulo::class, 'foreign_key', 'other_key');
-        return $this->belengsTo(Periodista::class);
+        return $this->belongsTo(Periodista::class);
          
     }
 }

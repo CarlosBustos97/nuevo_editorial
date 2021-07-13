@@ -18,6 +18,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ArticuloController;
 use App\Http\Controllers\RevistaController;
 use App\Http\Controllers\PeriodistaController;
+use App\Http\Controllers\AgregarRevistaController;
 
 Route::get('/', [HomeController::class,'index'])->name('articulos');
 // Articulos
@@ -29,6 +30,10 @@ Route::delete('articulo/delete_revista/{articulo?}/{revista?}',[ArticuloControll
 Route::get('revista', [RevistaController::class,'index'])->name('revistas');
 Route::get('revista/nombre/{id}', [RevistaController::class,'cargarRevista'])->name('revista');
 Route::get('revista/update/{id?}', [RevistaController::class,'update'])->name('update.revista');
+Route::view('agregarRevistas', 'agregarRevistas')->name('agregarRevistas');
 
 //Periodistas
 Route::get('periodistas',[PeriodistaController::class,'index'])->name('periodistas');
+Route::get('periodista/nombre/{id}', [PeriodistaController::class,'cargarPeriodista'])->name('periodista');
+Route::delete('periodista/delete_periodista/{periodista?}/{articulo?}',[PeriodistaController::class,'delete'])->name('delete.periodista_articulo');
+Route::post('periodista/agregar_articulo',[PeriodistaController::class,'store'])->name('store.periodista_articulo');

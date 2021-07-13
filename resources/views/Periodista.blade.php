@@ -9,12 +9,16 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <!-- Bootstrap-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <!-- JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <!-- JQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
         <!-- axios -->
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+        
         
     </head>
     <body>
@@ -52,76 +56,61 @@
                 </div>
             </nav>
         </div>
-        <div class="container mt-4">            
-            <div class="form">
-                <form action="{{route('update.revista',$revista->id)}}" 
-                    method="PUT">
+        <div class="container">            
+            {{-- <input 
+                type="hidden" 
+                id="periodista" 
+                name="periodista" 
+                value="{{$periodista->id}}"
+            > --}}
+            <div class="row pt-4 offset-2">
+                <div class="col-lg-1 col-sm-12 ">
+                    Nombre: 
+                </div>
+                <div class="col-lg-4 col-sm-12">
                     <input 
-                        type="hidden" 
-                        id="revista" 
-                        name="revista" 
-                        value="{{$revista->id}}">
-                        <div class="row">
-                            <div class="col-lg-1 pt-1 col-sm-12">
-                                Titulo: 
-                            </div>
-                            <div class="col-lg-9 pt-1 col-sm-12">
-                                <input 
-                                    class="form-control" 
-                                    id="nombreRevista"
-                                    name="nombreRevista"
-                                    type="text" 
-                                    value="{{$revista->titulo}}">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-1 pt-1 col-sm-12">
-                                Articulo: 
-                            </div>
-                            <div class="col-lg-9 pt-1 col-sm-12">
-                                <select 
-                                    name="idArticulo" 
-                                    id="idArticulo" 
-                                    class="form-select"> 
-                                    @foreach ($articulos as $item)                
-                                    <option value="{{$item->id}}">                             
-                                        {{$item->nombre}}
-                                    </option>    
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="col-lg-2 text-center pt-2 col-sm-12"> 
-                                <button class="btn btn-sm btn-dark ps-3 pe-3" type="submit">Agregar Artículo</button>
-                            </div>
-                        </div>                        
-                </form>
-            </div>
-            @if ($revista_articulo->count()>0)
-            <section>
+                        class="form-control" 
+                        id="nombrePeriodista"
+                        name="nombrePeriodista"
+                        type="text" 
+                        value="{{$periodista->nombre}}">
+                </div>
+                <div class="col-lg-5 col-sm-12">
+                    <button 
+                        type="button" 
+                        class="btn btn-dark" 
+                        data-bs-toggle="modal" 
+                        data-bs-target="#agregarArticulo">
+                        Agregar Artículo
+                    </button>
+                </div>
+            </div>                     
+        </div>
+        <section>
+            <div class="container">
+                @if ($periodista_articulo->count()>0)
                 <div class="row mt-5" >
-                    <label for="" class="label text-center">Artículos Actuales</label>
+                    <label for="" class="label text-center">Artículo Escritos</label>
                     <table class="table table-striped table-hover">
                         <thead >
                             <th class="col-1">Articulo #</th>
-                            <th class="col-5">Titulo</th>
-                            {{-- <th class="col-2">Ejmplares</th>
-                            <th class="col-2">Páginas</th> --}}
+                            <th class="col-5">Nombre</th>
+                            
                             <th class="col-2">Eliminar</th>
                         </thead>
                         <tbody>
-                            @foreach ($revista_articulo as $item)  
+                            @foreach ($periodista_articulo as $item)  
                             <tr>
                                 <td> {{$item->articulo->id}} </td>
                                 <td> {{$item->articulo->nombre}} </td>
-                                {{-- <td> {{$item->revista->num_ejemplares}} </td>
-                                <td> {{$item->revista->num_paginas}} </td> --}}
+                                
                                 <td>
                                     <button 
                                         type="button" 
                                         class="btn btn-sm btn-danger"
                                         id="btnEliminar"
                                         name="btnEliminar"
-                                        onclick="eliminar({{$revista->id}},{{$item->articulo->id}})">
+                                        onclick="eliminar({{$periodista->id}},{{$item->articulo->id}})">
                                         Eliminar
                                     </button>
                                 </td>
@@ -130,19 +119,74 @@
                         </tbody>
                     </table>                            
                 </div>
-            </section>                
-            @else
-            <div class="alert alert-danger mt-2 text-center" role="alert">
-                Esta revista no tiene asociado ningún artículo
+                @else
+                <div class="alert alert-danger mt-2 text-center" role="alert">
+                    Aún no tiene artículos escritos
+                </div>
+                @endif
             </div>
-            @endif
-                 
+        </section>
+
+        <!-- Button trigger modal -->
+    
+  
+  <!-- Modal -->
+  <div class="modal fade" id="agregarArticulo" tabindex="-1" aria-labelledby="agregarArticuloLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="agregarArticuloLabel">Artículo</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+        <div class="modal-body">
+            <div class="input-group mb-3">                
+                <input type="text" id="nombreArticulo" name="nombreArticulo" class="form-control" placeholder="Nombre Artículo" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+            {{-- <div class="input-group mb-3">                
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Seleccione revista</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+            </div> --}}
+            <div class="input-group">                
+                <textarea class="form-control" aria-label="With textarea" placeholder="Cuerpo del artículo"></textarea>
+              </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-dark" onclick="agregarArticulo()">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+                 
+        
     </body>
     <script>
-        function eliminar(revista, articulo){
-            let url = '{{route("delete.revista_articulo")}}/'+articulo+"/"+revista;            
+        function agregarArticulo(){
+            let nombreArticulo = $("#nombreArticulo").val();
+            let periodista = {{$periodista->id}};
+            // console.log(nombreArticulo, periodista);
+            // let url = '{{route("store.periodista_articulo")}}/'+periodista+"/"+nombreArticulo;            
+            let url = '{{route("store.periodista_articulo")}}';
             console.log(url);
+            axios.post(url,{
+                nombreArticulo: nombreArticulo,
+                periodista: periodista
+            }).then(function(response) {
+                console.log(response.data);
+                // console.log("Entro");
+                location.reload();
+            }).catch(function(error) {
+                console.log(error.message);                
+                
+            });
+        }
+        function eliminar(periodista, articulo){
+            let url = '{{route("delete.periodista_articulo")}}/'+periodista+"/"+articulo;            
+            // console.log(url);
             axios.delete(url).then(function(response) {
                 // console.log(response.data);
                 // console.log("Entro");

@@ -5,15 +5,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Editorial</title>
+        <!--popper js -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <!-- Bootstrap-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
+        <!-- JQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
-
         <!-- axios -->
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-        
     </head>
     <body>
         <div class="container-fluid">
@@ -29,9 +30,16 @@
                             <li class="nav-item active">
                                 <a class="nav-link" href="{{route('articulos')}}">Articulos</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{route('revistas')}}">Revistas</a>
-                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                  Revistas
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarScrollingDropdown">
+                                    <li><a class="dropdown-item" href="{{route('agregarRevistas')}}">Añadir Revista</a></li>
+                                    <li><a class="dropdown-item" href="{{route('revistas')}}">Ver Revistas</a></li>
+                                  
+                                </ul>
+                            </li> 
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Empleados</a>
                             </li>
@@ -43,10 +51,10 @@
                 </div>
             </nav>
         </div>
-        <div class="container-fluid">                
-            
+        <div class="container">
+            <div class="row">
                 @foreach ($revistas as $revista)
-                <div class="card-group text-center">                
+                <div class="col-12 col-md-6 col-lg-4 mb-4">
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Revista: {{$revista->titulo}}</h5>                                
@@ -58,11 +66,11 @@
                                         Ver
                                     </button>
                                 </form>
-                        </div>                             
+                        </div>        
                     </div>
-                </div>                   
-                @endforeach  
-            
+                </div>
+                @endforeach
+            </div>
         </div>
         
             
