@@ -31,6 +31,12 @@ Route::get('revista', [RevistaController::class,'index'])->name('revistas');
 Route::get('revista/nombre/{id}', [RevistaController::class,'cargarRevista'])->name('revista');
 Route::get('revista/update/{id?}', [RevistaController::class,'update'])->name('update.revista');
 Route::view('agregarRevistas', 'agregarRevistas')->name('agregarRevistas');
+Route::get('agregarRevistas', function () {
+    $tipos = Tipos::get();
+    return view('agregarRevistas',[
+        'tipos' => $tipos,
+    ]);
+});
 
 //Periodistas
 Route::get('periodistas',[PeriodistaController::class,'index'])->name('periodistas');
