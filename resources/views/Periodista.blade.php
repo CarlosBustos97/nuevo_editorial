@@ -168,10 +168,9 @@
         function agregarArticulo(){
             let nombreArticulo = $("#nombreArticulo").val();
             let periodista = {{$periodista->id}};
-            // console.log(nombreArticulo, periodista);
-            // let url = '{{route("store.periodista_articulo")}}/'+periodista+"/"+nombreArticulo;            
-            let url = '{{route("store.periodista_articulo")}}';
-            console.log(url);
+            // console.log(nombreArticulo, periodista);            
+            let url = '{{route("storeArticulo")}}';
+            console.log("datos", nombreArticulo, periodista);
             axios.post(url,{
                 nombreArticulo: nombreArticulo,
                 periodista: periodista

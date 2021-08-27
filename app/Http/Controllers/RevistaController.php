@@ -52,7 +52,7 @@ class RevistaController extends Controller
         //     'articulo' => $articulo,
         //     'revista' => $revista,
         // ]);
-        return 'si';
+        // return 'si';
     }
 
     public function store(){

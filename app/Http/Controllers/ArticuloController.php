@@ -41,10 +41,13 @@ class ArticuloController extends Controller
 
     public function delete($articulo = null, $revista = null, Revista_Articulo $revista_articulo){
         $revista_articulo->where('articulo_id', '=', $articulo)->where('revista_id', '=', $revista)->delete();
-        // return ([
-        //     'articulo' => $articulo,
-        //     'revista' => $revista,
-        // ]);
-        return 'si';
+        return ([
+            'articulo' => $articulo,
+            'revista' => $revista,
+        ]);        
+    }
+
+    public function store(Request $request){
+        print_r($request);die;
     }
 }

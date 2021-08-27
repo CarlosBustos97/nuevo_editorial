@@ -87,9 +87,9 @@
                         <div class="col-lg-4 ps-0 pe-5 text-center">
                             <select class="form-select" aria-label="Default select example">
                                 <option selected>Seleccione...</option>
-                                {{-- @foreach ($tipo as $item)
+                                @foreach ($tipos as $item)
                                     <option value="{{$item->id}}">{{$item->tipo}}</option>
-                                @endforeach --}}
+                                @endforeach
                                 
                                 
                               </select>
